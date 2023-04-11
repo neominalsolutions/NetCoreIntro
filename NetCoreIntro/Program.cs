@@ -5,6 +5,32 @@ using NetCoreIntro.Services;
 
 namespace NetCoreIntro
 {
+
+  // EF Core (CRUD operations)
+  // Custom Tag Helper
+  // Custom View Component
+  // JSON Result, AJAX iþlemleri JQUERY
+  // CLientside paket yöntemi
+  // Session (InMemory)
+  // Cookie
+
+
+  // NTier Katmanlý Clean Architecture Proje Yapýsý (1 saat)
+  // EF Core Identity Yapýsý
+  // Authentication Authorization, CookieBasedAuthentication, Authorize Attribute, Policy Based,Role Based,Claim Based (Permission Based)
+  // Docker
+  // Redis
+
+  // WEB API
+  // Token Based Authentication
+  // JWT
+  // HTTP STATUS CODE
+  // HTTVERBS
+  // SWAGGER API DOCUMENTATION
+  // CORS
+
+  // Not: Form üzerinden IForm interface 
+
   public class Program
   {
     public static void Main(string[] args)

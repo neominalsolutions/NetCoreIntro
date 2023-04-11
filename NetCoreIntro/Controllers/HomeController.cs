@@ -13,7 +13,7 @@ namespace NetCoreIntro.Controllers
       _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string RequestId = "12345")
     {
       
 
@@ -21,6 +21,19 @@ namespace NetCoreIntro.Controllers
     }
 
     public IActionResult Privacy()
+    {
+      return View();
+    }
+
+    [Route("categories",Name ="CategoryRoute")]
+    public IActionResult Categories(int? id)
+    {
+      return View();
+    }
+
+    //RouteKey yani nami ile ilgili route değerini action'a tanımladık.
+    [Route("/speakers", Name ="speakerRoute")]
+    public IActionResult Spikers(string speakerId,string currentYear)
     {
       return View();
     }

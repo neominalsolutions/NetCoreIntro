@@ -2,7 +2,67 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Css {
+
+  <style>
+    body {
+      background-color:turquoise;
+    }
+  </style>
+  
+}
+
+
+@{
+  // querystring formatında routedan veri göndericem
+  var routeParams = new Dictionary<string, string>
+            {
+              { "speakerId", "11" },
+              { "currentYear", "true" }
+            };
+}
+
+
+
+
+@section Banner {
+  <p>
+    Banner Field
+  </p>
+}
+
+
+
+
+
+
+
+<img src="~/img/LooseCoupling.png" width="50" height="50" asp-append-version="true" />
+
+<cache vary-by-query="RequestId">
+  Current Time Variant By Query: @DateTime.Now
+</cache>
+
+<br />
+
+@*Arayüz tarafında bir cache çözümü sunar default 20dk *@
+@*<cache expires-on="@new DateTime(2023,4,11,15,0,0)">@DateTime.Now</cache>*@
+
+@* Razor Web Page sayfa bazlı çalışıyor orada kullanılacak bir teknik *@
+@*<a asp-page="/send-email">Send Email</a>*@
+
+
+<a asp-route="CategoryRoute" asp-route-id="1">Categories/1</a>
+@*RouteName tanımı yaparak o routingKey ile ilgili linkin sistem tarafından oluşmasını sağladık*@
+<a asp-route="speakerRoute"
+   asp-all-route-data="routeParams">Speaker Evaluations</a>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+@section Scripts {
+
+}

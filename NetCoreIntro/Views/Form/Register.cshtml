@@ -1,0 +1,94 @@
+﻿@model RegisterModel
+
+<style>
+  form{
+    margin-top:10px;
+    padding:20px;
+  }
+</style>
+
+@*Tüm hata mesajı  dökümü ValidationSummary *@
+@*CSRF atakları için forma token ekle @Html.AntiForgeryToken()*@
+
+@*@using (Html.BeginForm("Register", "Form", FormMethod.Post))
+{
+  @Html.AntiForgeryToken()
+  ;
+
+
+  @Html.ValidationSummary(); 
+  
+
+  @Html.TextBoxFor(x=> x.Name)
+  @Html.ValidationMessageFor(x=> x.Name)
+
+  <input type="submit" value="Kaydet" />
+}*@@*@using (Html.BeginForm("Register", "Form", FormMethod.Post))
+{
+  @Html.AntiForgeryToken()
+  ;
+
+
+  @Html.ValidationSummary(); 
+  
+
+  @Html.TextBoxFor(x=> x.Name)
+  @Html.ValidationMessageFor(x=> x.Name)
+
+  <input type="submit" value="Kaydet" />
+}*@
+
+Time: @DateTime.Now.ToLongTimeString()
+
+@*asp-antiforgery="false" default da asp-antiforgery açık güvenli oluyor. *@
+
+<form asp-controller="Form" asp-action="Register" method="post" novalidate>
+  <div class="alert alert-danger" asp-validation-summary="All"></div>
+
+  <!--Model binding işlemi-->
+  <label asp-for="Name"></label>
+  <input class="form-control" asp-for="Name" placeholder="UserName" />
+  <span asp-validation-for="Name"></span>
+
+  <br />
+
+
+  <input class="form-control" asp-for="Email" placeholder="Email" />
+  <span class="text-danger" asp-validation-for="Email"></span>
+  <br />
+
+  <input class="form-control" type="text" asp-for="Password" placeholder="Password" />
+  <span asp-validation-for="Password"></span>
+  <br />
+
+  <input class="form-control" type="text" asp-for="PasswordConfirm" placeholder="Password Confirm" />
+  <span asp-validation-for="PasswordConfirm"></span>
+  <br />
+
+  <select class="form-control" asp-for="City" asp-items="ViewBag.Cities"></select>
+  <br />
+
+  <textarea asp-for="Name" rows="10" cols="100" class="form-control"></textarea>
+
+
+@*  @Html.DropDownListFor(x=> x.City,ViewBag.Cities,"İlçeler")*@
+
+  @Html.DropDownList("City",ViewBag.Cities,"Seçim Yapınız",new {@class="form-control"})
+
+  <input class="btn btn-success" type="submit" value="Kaydet" />
+
+</form>
+
+
+<!--Section scripts ile tüm layout daki js kütüphanelerinden sonra partial yükle-->
+
+@section Scripts {
+
+  <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+<script>
+  //alert("Deneme")
+</script>

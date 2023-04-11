@@ -4,9 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NetCoreIntro</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+
+  <environment include="Development">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/15.0.1/css/bootstrap.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position"
+          asp-fallback-test-value="absolute"
+           />
+  </environment>
+
+
     <link rel="stylesheet" href="~/NetCoreIntro.styles.css" asp-append-version="true" />
+   @await RenderSectionAsync("Css", required: false)
 </head>
 <body>
     <header>
@@ -39,11 +53,19 @@
             <li class="nav-item">
               <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Home Page</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-controller="Form" asp-action="Register">Register User</a>
+            </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    @* required true yaparsak tüm sayfalarda bu section çağırmaya zorladığımız anlamına gelir. default true dikkat edelim hata alırız. false olarak işaretlemeyi unutmayalım. *@
+  @await RenderSectionAsync("Banner",required:false)
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -54,10 +76,35 @@
         <div class="container">
             &copy; 2023 - NetCoreIntro - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+
+
+   
+
+   @* <partial name="_ValidationScriptsPartial" />*@
+
+    
+
+    <environment names="Development">
+      <strong>Uygulama Development Mode üzerinden çalışıyor</strong>
+    </environment>
+
+    <environment names="Production">
+      <strong>Uygulama Production Mode üzerinden çalışıyor</strong>
+    </environment>
+    @* Uygulama Test ortamında publish etmek için dotnet publish --configuration Staging *@
+    <environment names="Staging">
+      <strong>Uygulama Test Mode üzerinden çalışıyor</strong>
+    </environment>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @*Formu yenilemenden hata varsa hataları görmemizi sağlar, layout koyarsak tüm uygulama genelinde olur*@
+
+@*  <partial name="_ValidationScriptsPartial" />*@
+
+@* Scriptler ile çalışırken doğru sıra ile çalışmak için kendimize özel bir isimde section açıp içerisine istedeğimiz kodu @section <SectionName> { // kod } *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
