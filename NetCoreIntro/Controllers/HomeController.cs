@@ -15,7 +15,7 @@ namespace NetCoreIntro.Controllers
 
     public IActionResult Index()
     {
-      throw new Exception("Hata");
+      
 
       return View();
     }

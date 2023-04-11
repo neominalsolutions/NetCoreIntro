@@ -15,7 +15,8 @@
 
               @* html helper yerine aşağıdaki gibi html attribute mantığı gelid tag helper *@
               @*@Html.ActionLink("a","index","controller")*@
-              
+              @* http://www.a.com/A/B/5/ali *@
+             @* <a asp-protocol="http" asp-host="www.a.com" asp-controller="A" asp-action="B" asp-route-id="4" asp-route-name="Ali"></a>*@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NetCoreIntro</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +30,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="di-sample">DI Sample</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="send-email">IOC Sample EmailService</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Home Page</a>
+            </li>
                     </ul>
                 </div>
             </div>
